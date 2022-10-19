@@ -8,13 +8,13 @@ import { Todo } from "../../Todo";
 })
 export class TodosComponent implements OnInit {
   localItem: string | null;
-  todos:Todo[];
-  constructor() { 
+  todos: Todo[];
+  constructor() {
     this.localItem = localStorage.getItem("todos");
-    if(this.localItem == null){
-    this.todos = [];
+    if (this.localItem == null) {
+      this.todos = [];
     }
-    else{
+    else {
       this.todos = JSON.parse(this.localItem);
     }
   }
@@ -22,21 +22,21 @@ export class TodosComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  deleteTodo(todo:Todo){
+  deleteTodo(todo: Todo) {
     console.log(todo);
     const index = this.todos.indexOf(todo);
-    this.todos.splice(index,1);
+    this.todos.splice(index, 1);
     localStorage.setItem("todos", JSON.stringify(this.todos));
   }
-  addTodo(todo:Todo){
+  addTodo(todo: Todo) {
     console.log(todo);
     this.todos.push(todo);
     localStorage.setItem("todos", JSON.stringify(this.todos));
   }
-  // toggleTodo(todo:Todo){
-  //   console.log(todo);
-  //   const index = this.todos.indexOf(todo);
-  //   this.todos[index].active =~this.todos[index].active;
-  //   localStorage.setItem("todos", JSON.stringify(this.todos));
-  // }
+  toggleTodo(todo: Todo) {
+    console.log(todo);
+    const index = this.todos.indexOf(todo);
+    this.todos[index].active = !this.todos[index].active;
+    localStorage.setItem("todos", JSON.stringify(this.todos));
+  }
 }

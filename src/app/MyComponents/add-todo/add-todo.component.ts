@@ -9,14 +9,14 @@ import { Todo } from 'src/app/Todo';
 export class AddTodoComponent implements OnInit {
   title: string | undefined;
   desc: string | undefined;
-  @Output() todoAdd: EventEmitter<Todo> =new EventEmitter();
+  @Output() todoAdd: EventEmitter<Todo> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
   }
-  onSubmit(){
-    const todo ={
+  onSubmit() {
+    const todo = {
       sno: 8,
       title: this.title,
       desc: this.desc,
